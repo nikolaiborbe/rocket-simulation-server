@@ -43,6 +43,7 @@ def aggregate_results(
     run_id: str,
     launch_lat: float = 63.786667,
     launch_lon: float = 9.363056,
+    weather: dict | None = None,
 ) -> MonteCarloResult:
     """Compute statistics and ellipses from MC simulation results."""
     successful = [r for r in results if r is not None]
@@ -93,4 +94,9 @@ def aggregate_results(
         trajectories=trajectories,
         launch_lat=launch_lat,
         launch_lon=launch_lon,
+        weather_temperature=weather.get("temperature") if weather else None,
+        weather_pressure=weather.get("pressure") if weather else None,
+        weather_wind_speed=weather.get("wind_speed") if weather else None,
+        weather_wind_direction=weather.get("wind_from_direction") if weather else None,
+        weather_humidity=weather.get("humidity") if weather else None,
     )

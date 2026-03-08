@@ -52,7 +52,7 @@ def _run_mc_background(
             progress_callback=on_progress,
         )
 
-        mc_result = aggregate_results(results, run_id, launch_lat=params.latitude, launch_lon=params.longitude)
+        mc_result = aggregate_results(results, run_id, launch_lat=params.latitude, launch_lon=params.longitude, weather=weather)
 
         # Save trajectories to disk
         traj_file = None
